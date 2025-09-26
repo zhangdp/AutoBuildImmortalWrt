@@ -21,7 +21,7 @@ ISO在虚拟机引导后 跑码结束后，在命令行输入 `ddd` 按提示 �
 详细的解说 可以参考我的另一个项目 [img-installer](https://github.com/wukongdaily/armbian-installer) 
 
 ## 如何查询imm仓库内有哪些插件
-https://mirrors.sjtug.sjtu.edu.cn/immortalwrt/releases/24.10.2/packages/x86_64/luci/
+https://mirrors.sjtug.sjtu.edu.cn/immortalwrt/releases/24.10.3/packages/x86_64/luci/
 ## 如何查询imm仓库外目前可以集成哪些插件
 https://github.com/wukongdaily/store
 > 具体方法 https://github.com/wukongdaily/AutoBuildImmortalWrt/discussions/209
