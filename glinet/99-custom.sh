@@ -1,7 +1,7 @@
 #!/bin/sh
 # 该脚本为immortalwrt首次启动时 运行的脚本 即 /etc/uci-defaults/99-custom.sh 也就是说该文件在路由器内 重启后消失 只运行一次
 # 设置默认防火墙规则，方便虚拟机首次访问 WebUI
-LOGFILE="/etc/config/uci-defaults-log.txt"
+LOGFILE="/tmp/setup/log.txt"
 # uci set firewall.@zone[1].input='ACCEPT'
 
 # 设置主机名映射，解决安卓原生 TV 无法联网的问题
@@ -10,7 +10,7 @@ uci set "dhcp.@domain[-1].name=time.android.com"
 uci set "dhcp.@domain[-1].ip=203.107.6.88"
 
 # 检查配置文件是否存在
-SETTINGS_FILE="/etc/config/pppoe-settings"
+SETTINGS_FILE="/tmp/setup/pppoe-settings"
 if [ ! -f "$SETTINGS_FILE" ]; then
     echo "PPPoE settings file not found. Skipping." >> $LOGFILE
 else
@@ -20,7 +20,7 @@ fi
 # 设置子网掩码 
 uci set network.lan.netmask='255.255.255.0'
 # 设置路由器管理后台地址
-IP_VALUE_FILE="/etc/config/custom_router_ip.txt"
+IP_VALUE_FILE="/tmp/setup/router_ip"
 if [ -f "$IP_VALUE_FILE" ]; then
     CUSTOM_IP=$(cat "$IP_VALUE_FILE")
     # 设置路由器的管理后台地址
