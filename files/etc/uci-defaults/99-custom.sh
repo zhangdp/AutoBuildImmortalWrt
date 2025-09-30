@@ -7,7 +7,7 @@ echo "Starting 99-custom.sh at $(date)" >>$LOGFILE
 # 因为本项目中 单网口模式是dhcp模式 直接就能上网并且访问web界面 避免新手每次都要修改/etc/config/network中的静态ip
 # 当你刷机运行后 都调整好了 你完全可以在web页面自行关闭 wan口防火墙的入站数据
 # 具体操作方法：网络——防火墙 在wan的入站数据 下拉选项里选择 拒绝 保存并应用即可。
-uci set firewall.@zone[1].input='ACCEPT'
+# uci set firewall.@zone[1].input='ACCEPT'
 
 # 设置主机名映射，解决安卓原生 TV 无法联网的问题
 uci add dhcp domain
@@ -177,16 +177,16 @@ else
 fi
 
 # 设置所有网口可访问网页终端
-uci delete ttyd.@ttyd[0].interface
+# uci delete ttyd.@ttyd[0].interface
 
 # 设置所有网口可连接 SSH
-uci set dropbear.@dropbear[0].Interface=''
+# uci set dropbear.@dropbear[0].Interface=''
 uci commit
 
 # 设置编译作者信息
-FILE_PATH="/etc/openwrt_release"
-NEW_DESCRIPTION="Packaged by wukongdaily"
-sed -i "s/DISTRIB_DESCRIPTION='[^']*'/DISTRIB_DESCRIPTION='$NEW_DESCRIPTION'/" "$FILE_PATH"
+# FILE_PATH="/etc/openwrt_release"
+# NEW_DESCRIPTION="Packaged by wukongdaily"
+# sed -i "s/DISTRIB_DESCRIPTION='[^']*'/DISTRIB_DESCRIPTION='$NEW_DESCRIPTION'/" "$FILE_PATH"
 
 # 若luci-app-advancedplus (进阶设置)已安装 则去除zsh的调用 防止命令行报 /usb/bin/zsh: not found的提示
 if opkg list-installed | grep -q '^luci-app-advancedplus '; then
